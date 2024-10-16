@@ -1,0 +1,15 @@
+Daftar belanja:
+Susu
+Roti
+Telur
+Buah
+
+Daftar tugas:
+Belajar Python
+Selesaikan laporan
+Beli buku
+
+Kata-kata motivasi:
+Jangan menyerah
+Terus berusaha
+Kamu pasti bisa
