@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Isian Risiko</title>
+    <style>
+        /* CSS Styles (unchanged) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #FFEAE3;
+            color: #333;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin: 0;
+            font-size: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        input[type="text"], input[type="number"], select, textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            font-size: 12px;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+            border-color: #FF5580;
+            outline: none;
+        }
+        .add-btn {
+            padding: 8px 10px;
+            background-color: #FFB1B1;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-size: 12px;
+        }
+        .add-btn:hover {
+            background-color: #FF5580;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+            padding: 6px;
+            text-align: left;
+        }
+        th {
+            background-color:  #FFB1B1;
+            color: #000;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .keterangan {
+            margin-top: 10px;
+            padding: 8px;
+            background-color:   #FFEAE3;
+            border: 1px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .keterangan h2 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .table-container {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Formulir Isian Risiko</h1>
+
+        <div class="form-group">
+            <label for="aset">Aset</label>
+            <input type="text" id="aset" placeholder="Masukkan aset terkait...">
+        </div>
+
+        <div class="form-group">
+            <label for="ancaman">Ancaman</label>
+            <input type="text" id="ancaman" placeholder="Masukkan deskripsi ancaman...">
+        </div>
+
+        <div class="form-group">
+            <label for="stride">Kategori STRIDE</label>
+            <select id="stride">
+                <option value="Spoofing">Spoofing</option>
+                <option value="Tampering">Tampering</option>
+                <option value="Repudiation">Repudiation</option>
+                <option value="Information Disclosure">Information Disclosure</option>
+                <option value="Denial of Service">Denial of Service</option>
+                <option value="Elevation of Privilege">Elevation of Privilege</option>
+            </select>
+        </div>
+
+        <div class="keterangan">
+            <h2>Keterangan Skor (1-10)</h2>
+            <p>1: Kerusakan sangat rendah</p>
+            <p>2: Kerusakan rendah</p>
+            <p>3: Kerusakan moderat</p>
+            <p>4: Kerusakan cukup besar</p>
+            <p>5: Kerusakan sedang</p>
+            <p>6: Kerusakan tinggi</p>
+            <p>7: Kerusakan signifikan</p>
+            <p>8: Kerusakan sangat tinggi</p>
+            <p>9: Kerusakan parah</p>
+            <p>10: Kerusakan kritis</p>
+        </div>
+
+        <h2>Penilaian Risiko (DREAD)</h2>
+        <div class="form-group">
+            <label for="damage">Damage Potential (D)</label>
+            <input type="number" id="damage" min="1" max="10" placeholder="Nilai antara 1 - 10">
+        </div>
+
+        <div class="form-group">
+            <label for="reproducibility">Reproducibility (R)</label>
+            <input type="number" id="reproducibility" min="1" max="10" placeholder="Nilai antara 1 - 10">
+        </div>
+
+        <div class="form-group">
+            <label for="exploitability">Exploitability (E)</label>
+            <input type="number" id="exploitability" min="1" max="10" placeholder="Nilai antara 1 - 10">
+        </div>
+
+        <div class="form-group">
+            <label for="affected_users">Affected Users (A)</label>
+            <input type="number" id="affected_users" min="1" max="10" placeholder="Nilai antara 1 - 10">
+        </div>
+
+        <div class="form-group">
+            <label for="discoverability">Discoverability (D)</label>
+            <input type="number" id="discoverability" min="1" max="10" placeholder="Nilai antara 1 - 10">
+        </div>
+
+        <h2>Mitigasi Risiko</h2>
+        <div class="form-group">
+            <label for="mitigasi">Tindakan Mitigasi</label>
+            <textarea id="mitigasi" placeholder="Masukkan rencana mitigasi (misal: implementasi firewall, enkripsi data)"></textarea>
+        </div>
+
+        <button class="add-btn" onclick="tambahRisiko()">Tambahkan Risiko</button>
+
+        <div class="table-container">
+            <h2>Data Risiko</h2>
+            <table id="tabelRisiko">
+                <thead>
+                    <tr>
+                        <th>Aset</th>
+                        <th>Ancaman</th>
+                        <th>Kategori STRIDE</th>
+                        <th>D</th>
+                        <th>R</th>
+                        <th>E</th>
+                        <th>A</th>
+                        <th>D</th>
+                        <th>Total DREAD</th>
+                        <th>Mitigasi</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function getRiskLevel(totalDREAD) {
+            if (totalDREAD >= 35) return "Tinggi";
+            if (totalDREAD >= 20) return "Sedang";
+            return "Rendah";
+        }
+
+        function tambahRisiko() {
+            const aset = document.getElementById("aset").value;
+            const ancaman = document.getElementById("ancaman").value;
+            const kategoriSTRIDE = document.getElementById("stride").value;
+            const damage = parseInt(document.getElementById("damage").value) || 0;
+            const reproducibility = parseInt(document.getElementById("reproducibility").value) || 0;
+            const exploitability = parseInt(document.getElementById("exploitability").value) || 0;
+            const affectedUsers = parseInt(document.getElementById("affected_users").value) || 0;
+            const discoverability = parseInt(document.getElementById("discoverability").value) || 0;
+            const mitigasi = document.getElementById("mitigasi").value;
+
+            const totalDREAD = damage + reproducibility + exploitability + affectedUsers + discoverability;
+            const keterangan = getRiskLevel(totalDREAD);
+
+            const tbody = document.querySelector("#tabelRisiko tbody");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${aset}</td>
+                <td>${ancaman}</td>
+                <td>${kategoriSTRIDE}</td>
+                <td>${damage}</td>
+                <td>${reproducibility}</td>
+                <td>${exploitability}</td>
+                <td>${affectedUsers}</td>
+                <td>${discoverability}</td>
+                <td>${totalDREAD} (${keterangan})</td>
+                <td>${mitigasi}</td>
+            `;
+            tbody.appendChild(row);
+
+            // Clear input fields after adding
+            document.getElementById("aset").value = '';
+            document.getElementById("ancaman").value = '';
+            document.getElementById("stride").value = '';
+            document.getElementById("damage").value = '';
+            document.getElementById("reproducibility").value = '';
+            document.getElementById("exploitability").value = '';
+            document.getElementById("affected_users").value = '';
+            document.getElementById("discoverability").value = '';
+            document.getElementById("mitigasi").value = '';
+        }
+    </script>
+</body>
+</html>
