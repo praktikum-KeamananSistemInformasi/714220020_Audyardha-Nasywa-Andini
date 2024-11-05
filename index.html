@@ -1,168 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Hash Comparison</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #4CAF50;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        .upload-form {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .hash-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .hash-box {
-            width: 45%;
-            padding: 10px;
-            background-color: #e9f5e9;
-            border-radius: 5px;
-            word-wrap: break-word;
-            border: 1px solid #d4ebd4;
-        }
-        .status {
-            text-align: center;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #f44336;
-            margin-bottom: 20px;
-        }
-        .status.success {
-            color: #4CAF50;
-        }
-        pre {
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            max-height: 400px;
-        }
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #888;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Tugas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hasil Perbandingan File</h1>
-
-        <div class="upload-form">
-            <input type="file" id="fileInput" accept=".txt">
-            <button onclick="processFile()">Unggah dan Periksa</button>
-        </div>
-
-        <div class="hash-container">
-            <div class="hash-box">
-                <strong>Original Hash:</strong>
-                <p id="originalHash">-</p>
-            </div>
-            <div class="hash-box">
-                <strong>Modified Hash:</strong>
-                <p id="modifiedHash">-</p>
-            </div>
-        </div>
-
-        <div id="statusMessage" class="status"></div>
-
-        <h2>Perbedaan antara file asli dan yang dimodifikasi:</h2>
-        <pre id="differences">-</pre>
-
-        <footer>
-            Dibuat dengan ❤ untuk tugas Keamanan Sistem Informasi
-        </footer>
-    </div>
-
-    <script>
-        let originalContent = '';
-        let originalHash = '';
-
-        // Fungsi untuk menghitung hash SHA-256
-        async function calculateHash(content) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(content);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        // Fungsi untuk mengunggah dan memproses file
-        async function processFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            if (!file) {
-                alert('Silakan unggah file terlebih dahulu.');
-                return;
-            }
-
-            // Baca konten file
-            const reader = new FileReader();
-            reader.onload = async function(e) {
-                const content = e.target.result;
-                if (!originalContent) {
-                    // Simpan konten dan hash asli
-                    originalContent = content;
-                    originalHash = await calculateHash(content);
-                    document.getElementById('originalHash').textContent = originalHash;
-                    document.getElementById('statusMessage').textContent = 'File asli telah diunggah.';
-                    document.getElementById('statusMessage').classList.add('success');
-                } else {
-                    // Hash file modifikasi
-                    const modifiedHash = await calculateHash(content);
-                    document.getElementById('modifiedHash').textContent = modifiedHash;
-                    document.getElementById('statusMessage').textContent = 
-                        originalHash === modifiedHash ? 'File tidak berubah.' : 'File telah diubah.';
-
-                    // Bandingkan isi file
-                    const diff = compareText(originalContent, content);
-                    document.getElementById('differences').textContent = diff;
-                }
-            };
-            reader.readAsText(file);
-        }
-
-        // Fungsi sederhana untuk membandingkan dua teks
-        function compareText(text1, text2) {
-            const lines1 = text1.split('\n');
-            const lines2 = text2.split('\n');
-            const diff = [];
-
-            lines1.forEach((line, index) => {
-                if (line !== lines2[index]) {
-                    diff.push(`- ${line}`);
-                    if (lines2[index] !== undefined) {
-                        diff.push(`+ ${lines2[index]}`);
-                    }
-                }
-            });
-
-            return diff.join('\n');
-        }
-    </script>
+  <header>
+    <h1>Daftar Tugas</h1>
+  </header>
+  <div class="button-container">
+    <!-- Mengarahkan ke folder tugas1/templates/index.html -->
+    <a href="tugas1/tugas1.html" class="button">Tugas 1</a>
+    <a href="tugas2/templates/index.html" class="button">Tugas 2</a>
+  </div>
 </body>
 </html>
